@@ -1,1 +1,1 @@
-# Actividad-3-Registro-y-Autenticaci-n
+# Actividad 3: Registro y Autenticación
