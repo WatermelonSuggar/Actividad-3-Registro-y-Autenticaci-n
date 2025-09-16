@@ -32,7 +32,12 @@ export function login(username, password) {
 }
 
 // 3) Obtener perfil
-export function getProfile(username, token) {
+export function getProfile(_usernameNotUsed, token) {
+  // ignoramos el username y llamamos a /me
+  return http('/api/usuarios/me', { token });
+}
+
+  
   const q = new URLSearchParams({ username });
   return http('/api/usuarios?' + q.toString(), { token });
 }
@@ -51,5 +56,6 @@ export function listUsers({ limit, skip, sort } = {}, token) {
   const qs = q.toString();
   return http('/api/usuarios' + (qs ? '?' + qs : ''), { token });
 }
+
 
 
