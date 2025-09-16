@@ -1,5 +1,6 @@
 // api.js
-const BASE = 'https://sid-restapi.onrender.com';
+const BASE = 'http://127.0.0.1:5050';
+
 async function http(path, { method = 'GET', token, body } = {}) {
   const headers = {};
   if (body) headers['Content-Type'] = 'application/json';
@@ -47,4 +48,5 @@ export function listUsers({ limit, skip, sort } = {}, token) {
   const qs = q.toString();
   return http('/api/usuarios' + (qs ? '?' + qs : ''), { token });
 }
+
 
