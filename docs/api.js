@@ -1,6 +1,5 @@
 // api.js
-const BASE = 'http://127.0.0.1:5050'; // cámbialo si usas 1234 u otro
-
+const BASE = 'https://sid-restapi.onrender.com';
 async function http(path, { method = 'GET', token, body } = {}) {
   const headers = {};
   if (body) headers['Content-Type'] = 'application/json';
@@ -28,9 +27,10 @@ export function login(username, password) {
   return http('/api/auth/login', { method: 'POST', body: { username, password } });
 }
 
-// 3) Obtener perfil (tu backend expone /api/usuarios/me)
-export function getProfile(_usernameNotUsed, token) {
-  return http('/api/usuarios/me', { token });
+// 3) Obtener perfil 
+export function getProfile(username, token) 
+{ const q = new URLSearchParams({ username }); 
+ return http('/api/usuarios?' + q.toString(), { token }); 
 }
 
 // 4) Actualizar data (main.js envía { username, data })
@@ -47,3 +47,4 @@ export function listUsers({ limit, skip, sort } = {}, token) {
   const qs = q.toString();
   return http('/api/usuarios' + (qs ? '?' + qs : ''), { token });
 }
+
