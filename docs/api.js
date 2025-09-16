@@ -1,5 +1,5 @@
 // api.js
-const BASE = 'http://127.0.0.1:1234/';
+const BASE = 'http://127.0.0.1:5050';
 
 async function http(path, { method = 'GET', token, body } = {}) {
   const headers = {};
@@ -51,4 +51,5 @@ export function listUsers({ limit, skip, sort } = {}, token) {
   const qs = q.toString();
   return http('/api/usuarios' + (qs ? '?' + qs : ''), { token });
 }
+
 
